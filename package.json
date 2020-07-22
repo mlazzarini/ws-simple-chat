@@ -1,0 +1,11 @@
+{
+  "name": "coding-test-doodle",
+  "version": "1.0.0",
+  "description": "Coding test for doodle (fullstack engineer)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Margherita Lazzarini",
+  "license": "ISC"
+}
