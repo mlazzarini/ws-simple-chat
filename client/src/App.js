@@ -1,31 +1,23 @@
 import React, { useState } from 'react';
-import './App.css';
 import { connect, disconnect, sendMessage } from './webSocketManager';
+import NameInput from './components/NameInput';
+import ChatRoom from './components/ChatRoom';
 
 function App() {
-	const [messagesList, setMessagesList] = useState('');
-	const [message, setMessage] = useState('');
-	const [yourName, setYourName] = useState(null);
+	const [messages, setMessages] = useState([]);
 
 	function appendMessage(msg) {
-		setMessagesList(list => `${list}/n${msg}`);
+		setMessages(messages => [...messages, msg]);
+		//setMessagesList(list => `${list}/n${msg}`);
 	}
 
-	function handleSubmit(e) {
-		sendMessage(message);
-		e.preventDefault();
-	}
+	// function handleSubmit(e) {
+	// 	sendMessage(message);
+	// 	e.preventDefault();
+	// }
 
-	function handleChange(e) {
-		setMessage(e.target.value);
-	}
-
-	function handleNameChange(e) {
-		setYourName(e.target.value);
-	}
-
-	function enterChatRoom() {
-		connect(yourName, appendMessage);
+	function enterChatRoom(name) {
+		connect(name, appendMessage);
 	}
 
 	return (
@@ -33,28 +25,8 @@ function App() {
 			<h1>
 				Chat
 			</h1>
-			<div className="name-container">
-				<input
-					type="text"
-					placeholder="Name"
-					value={yourName}
-					name="yourName"
-					onChange={handleNameChange}
-				/>
-				<button onClick={enterChatRoom}>Join chat room</button>
-			</div>
-			<div className="chat-container">
-				<p>
-					{messagesList}
-				</p>
-				<form onSubmit={handleSubmit}>
-					<label>
-						Message:
-					<input type="text" value={message} onChange={handleChange} />
-					</label>
-					<input type="submit" value="Send" />
-				</form>
-			</div>
+			<NameInput enterChatRoom={enterChatRoom}/>
+			<ChatRoom sendMessage={sendMessage} messages={messages}/>
 		</div>
 	);
 }
