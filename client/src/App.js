@@ -8,13 +8,7 @@ function App() {
 
 	function appendMessage(msg) {
 		setMessages(messages => [...messages, msg]);
-		//setMessagesList(list => `${list}/n${msg}`);
 	}
-
-	// function handleSubmit(e) {
-	// 	sendMessage(message);
-	// 	e.preventDefault();
-	// }
 
 	function enterChatRoom(name) {
 		connect(name, appendMessage);
