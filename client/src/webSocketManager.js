@@ -2,9 +2,11 @@ import io from 'socket.io-client';
 
 let socket;
 
-export const connect = fnCallback => {
-	socket = io('http://localhost:5000');
-	console.log(`Connecting socket...`);
+export const connect = (name, fnCallback) => {
+	socket = io(`http://localhost:5000`);
+	socket.on('connect', () => {
+		socket.emit('join', { 'name': name });
+	});
 	socket.on('message', msg => {
 		fnCallback(msg);
 	});

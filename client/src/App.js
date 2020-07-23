@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { connect, disconnect, sendMessage } from './webSocketManager';
 
 function App() {
 	const [messagesList, setMessagesList] = useState('');
 	const [message, setMessage] = useState('');
-
-	useEffect(() => {
-		connect(appendMessage);
-		// return () => {
-		//   disconnect();
-		// }
-	}, []);
+	const [yourName, setYourName] = useState(null);
 
 	function appendMessage(msg) {
-		setMessagesList(list => `${list}\n${msg}`);
+		setMessagesList(list => `${list}/n${msg}`);
 	}
 
 	function handleSubmit(e) {
@@ -26,11 +20,29 @@ function App() {
 		setMessage(e.target.value);
 	}
 
+	function handleNameChange(e) {
+		setYourName(e.target.value);
+	}
+
+	function enterChatRoom() {
+		connect(yourName, appendMessage);
+	}
+
 	return (
 		<div className="App">
 			<h1>
 				Chat
 			</h1>
+			<div className="name-container">
+				<input
+					type="text"
+					placeholder="Name"
+					value={yourName}
+					name="yourName"
+					onChange={handleNameChange}
+				/>
+				<button onClick={enterChatRoom}>Join chat room</button>
+			</div>
 			<div className="chat-container">
 				<p>
 					{messagesList}
