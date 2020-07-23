@@ -7,6 +7,7 @@ function ChatRoom(props) {
 
 	function handleSubmit(e) {
 		sendMessage(message);
+		setMessage('');
 		e.preventDefault();
 	}
 
