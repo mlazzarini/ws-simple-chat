@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './App.css';
 import { connect, disconnect, sendMessage } from './webSocketManager';
 import NameInput from './components/NameInput';
 import ChatRoom from './components/ChatRoom';

@@ -2,4 +2,16 @@
   border: 1px solid black;
   width: 400px;
   height: 600px;
+  margin: auto;
+}
+
+.message {
+  border-bottom: 1px solid black;
+  padding: 4px;
+  text-align: left;
+}
+
+.metadata {
+  font-size: 12px;
+  color: grey;
 }
