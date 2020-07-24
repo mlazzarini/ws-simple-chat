@@ -1,7 +1,7 @@
 {
-  "name": "coding-test-doodle",
+  "name": "ws-simple-chat",
   "version": "1.0.0",
-  "description": "Coding test for doodle (fullstack engineer)",
+  "description": "Simple chat fullstack application, based on Web Sockets",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
