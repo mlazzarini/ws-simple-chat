@@ -3,31 +3,34 @@ import './ChatRoom.css';
 
 function ChatRoom(props) {
 	const { sendMessage, messages } = props;
-	const [message, setMessage] = useState('');
+	const [nextMessage, setNextMessage] = useState('');
 
 	function handleSubmit(e) {
-		sendMessage(message);
-		setMessage('');
+		sendMessage(nextMessage);
+		setNextMessage('');
 		e.preventDefault();
 	}
 
 	function handleChange(e) {
-		setMessage(e.target.value);
+		setNextMessage(e.target.value);
 	}
 
 	return (
 		<div className="chat-container">
 			<input
 				type="text"
-				value={message}
+				value={nextMessage}
 				name="message"
 				onChange={handleChange}
 			/>
 			<button onClick={handleSubmit}>Send</button>
-
-			<ul>
-				{messages.map(message => <li>{message}</li>)}
-			</ul>
+				{messages.map(message => 
+					<div className="message">
+						<span className="metadata">{message.username} wrote:</span><br />
+						{message.text}<br />
+						<span className="metadata">{message.timestamp}</span>
+					</div>
+				)}
 		</div>
 	);
 }

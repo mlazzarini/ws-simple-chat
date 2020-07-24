@@ -1,6 +1,6 @@
 class SessionManager {
 	constructor() {
-      this.sessions = {};
+		this.sessions = {};
 	}
 
 	addUser(id, name) {
@@ -8,9 +8,13 @@ class SessionManager {
 	}
 
 	removeUser(id) {
-      const name = this.sessions[id];
-      delete this.sessions[id];
-      return name;
+		const name = this.getUsername(id);
+		delete this.sessions[id];
+		return name;
+	}
+
+	getUsername(id) {
+		return this.sessions[id];
 	}
 }
 
