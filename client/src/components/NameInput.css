@@ -1,0 +1,13 @@
+.name-container {
+	width: 400px;
+	margin: auto;
+}
+
+.name-container .name-input {
+	height: 100%;
+}
+
+.name-container .button {
+	margin: 4px;
+	height: 100%;
+}

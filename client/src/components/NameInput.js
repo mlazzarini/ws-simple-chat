@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './NameInput.css';
 
 function NameInput(props) {
 	const { enterChatRoom } = props;
@@ -17,6 +18,7 @@ function NameInput(props) {
 	return (
 		<div className="name-container">
 			<input
+				className="name-input"
 				disabled={disabled}
 				type="text"
 				placeholder="Name"
@@ -24,7 +26,7 @@ function NameInput(props) {
 				name="yourName"
 				onChange={handleNameChange}
 			/>
-			<button onClick={submitName} disabled={disabled}>Join chat room</button>
+			<button className="button" onClick={submitName} disabled={disabled}>Join chat room</button>
 		</div>
 	);
 }

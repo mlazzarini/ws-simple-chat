@@ -17,20 +17,31 @@ function ChatRoom(props) {
 
 	return (
 		<div className="chat-container">
-			<input
-				type="text"
-				value={nextMessage}
-				name="message"
-				onChange={handleChange}
-			/>
-			<button onClick={handleSubmit}>Send</button>
-				{messages.map(message => 
-					<div className="message">
-						<span className="metadata">{message.username} wrote:</span><br />
-						{message.text}<br />
+			<div className="chat-messages">
+				{messages.map((message, index) => {
+					return message.username === 'SYSTEM' ?
+					<div key={index} className="message">
+						<span className="metadata">{message.text}</span><br />
 						<span className="metadata">{message.timestamp}</span>
 					</div>
+					:
+					<div key={index} className="message">
+						<span className="metadata">{message.username}:</span><br />
+						{message.text}<br />
+						<span className="metadata">{message.timestamp}</span>
+					</div>;
+				}
 				)}
+			</div>
+			<div className="send-message-button">
+				<input
+					type="text"
+					value={nextMessage}
+					name="message"
+					onChange={handleChange}
+				/>
+				<button className="button" onClick={handleSubmit}>Send</button>
+			</div>
 		</div>
 	);
 }
