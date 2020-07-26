@@ -19,6 +19,7 @@
 
 .chat-messages {
   height: 90%;
+  overflow: auto;
 }
 
 .send-message-button {
